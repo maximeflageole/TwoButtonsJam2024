@@ -37,14 +37,14 @@ public class Hero : MonoBehaviour
             m_rb.AddForce(new Vector2(1 * m_acceleration, 0));
         }
 
-        if (m_rb.velocity.magnitude > m_maxSpeed)
+        if (m_rb.linearVelocity.magnitude > m_maxSpeed)
         {
-            m_rb.velocity = m_rb.velocity.normalized * m_maxSpeed;
+            m_rb.linearVelocity = m_rb.linearVelocity.normalized * m_maxSpeed;
         }
 
-        if (Mathf.Abs(m_rb.velocity.magnitude) < 0.5)
+        if (Mathf.Abs(m_rb.linearVelocity.magnitude) < 0.5)
         {
-            m_rb.velocity = Vector2.zero;
+            m_rb.linearVelocity = Vector2.zero;
         }
         else
         {
@@ -54,7 +54,7 @@ public class Hero : MonoBehaviour
 
     private void ApplyDeceleration()
     {
-        var direction = m_rb.velocity.normalized;
+        var direction = m_rb.linearVelocity.normalized;
         //Going left
         if (direction.x < 0.0f)
         {
